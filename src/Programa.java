@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Programa extends JFrame{
     private JPanel panel1;
@@ -111,6 +113,79 @@ public class Programa extends JFrame{
                 } else {
                     fieldBuscarCedula1.setText("");
                     areaBuscar.setText("***EMPLEADO NO ENCONTRADO***\nIngrese una cédula existente.");
+                }
+            }
+        });
+        fieldRegistrarSueldo.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c) && c!='.') {
+                    e.consume();
+                }
+            }
+        });
+        fieldRegistrarNombre.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+
+        fieldRegistrarCedula.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        fieldBuscarCedula.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        fieldModificarNombre.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        fieldModificarSueldo.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c) && c!='.') {
+                    e.consume();
+                }
+            }
+        });
+        fieldBuscarCedula1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        fieldEliminarCedula.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
                 }
             }
         });
