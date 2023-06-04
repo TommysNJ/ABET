@@ -66,6 +66,16 @@ public class Funcionamiento {
         }
     }
 
+    public Empleado busquedaNombre (String nombre){
+        for (int i=0; i< listaEmpleados.size();i++){
+            Empleado empleado = listaEmpleados.get(i);
+            if (empleado.getNombre().equalsIgnoreCase(nombre)){
+                return empleado;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "Lista Empleados\n" + listaEmpleados;

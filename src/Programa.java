@@ -26,6 +26,9 @@ public class Programa extends JFrame{
     private JButton eliminarEmpleadoButton;
     private JTextArea areaEliminar;
     private JTextField fieldBuscarCedula1;
+    private JTextField fieldBuscarNombre;
+    private JButton buscarButton1;
+    private JTextArea areaBuscarNombre;
 
     private Funcionamiento l = new Funcionamiento();
 
@@ -45,6 +48,7 @@ public class Programa extends JFrame{
                 l.agregar(e3);
                 l.agregar(e4);
 
+                quemarDatosButton.setEnabled(false);
                 JOptionPane.showMessageDialog(null,"Datos ingresados correctamente.");
             }
         });
@@ -113,6 +117,18 @@ public class Programa extends JFrame{
                 } else {
                     fieldBuscarCedula1.setText("");
                     areaBuscar.setText("***EMPLEADO NO ENCONTRADO***\nIngrese una cédula existente.");
+                }
+            }
+        });
+        buscarButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (l.busquedaNombre(fieldBuscarNombre.getText())!=null){
+                    areaBuscar.setText("***EMPLEADO ENCONTRADO***\n" + l.busquedaNombre(fieldBuscarNombre.getText()).toString());
+                    fieldBuscarNombre.setText("");
+                } else{
+                    fieldBuscarNombre.setText("");
+                    areaBuscar.setText("***EMPLEADO NO ENCONTRADO***\nIngrese un nombre existente.");
                 }
             }
         });
