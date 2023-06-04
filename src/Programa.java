@@ -145,9 +145,9 @@ public class Programa extends JFrame{
                     l.modificarEmpleadoPorNombre(fieldCedula.getText(),fieldNombre.getText(),Double.parseDouble(fieldSueldo.getText()));
                     JOptionPane.showMessageDialog(null,"Empleado modificado con éxito.");
                     areaModificar.append("-> MODIFICACIÓN\n" + l.busquedaNombre(fieldNombre.getText()).toString());
-                    fieldBuscarCedula.setText("");
-                    fieldModificarNombre.setText("");
-                    fieldModificarSueldo.setText("");
+                    fieldCedula.setText("");
+                    fieldNombre.setText("");
+                    fieldSueldo.setText("");
                 } else {
                     areaModificar.setText("");
                     fieldNombre.setText("");
@@ -224,6 +224,33 @@ public class Programa extends JFrame{
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
                 if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        fieldNombre.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        fieldCedula.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    e.consume();
+                }
+            }
+        });
+        fieldSueldo.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isDigit(c) && c!='.') {
                     e.consume();
                 }
             }
