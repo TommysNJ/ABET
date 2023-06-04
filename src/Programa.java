@@ -28,6 +28,10 @@ public class Programa extends JFrame{
     private JTextField fieldBuscarCedula1;
     private JTextField fieldBuscarNombre;
     private JButton buscarButton1;
+    private JTextField fieldNombre;
+    private JTextField fieldCedula;
+    private JTextField fieldSueldo;
+    private JButton modificarButton1;
     private JTextArea areaBuscarNombre;
 
     private Funcionamiento l = new Funcionamiento();
@@ -129,6 +133,25 @@ public class Programa extends JFrame{
                 } else{
                     fieldBuscarNombre.setText("");
                     areaBuscar.setText("***EMPLEADO NO ENCONTRADO***\nIngrese un nombre existente.");
+                }
+            }
+        });
+        modificarButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (l.busquedaNombre(fieldNombre.getText())!=null){
+                    areaModificar.setText("");
+                    areaModificar.append("***EMPLEADO A MODIFICAR***\n" + l.busquedaNombre(fieldNombre.getText()).toString());
+                    l.modificarEmpleadoPorNombre(fieldCedula.getText(),fieldNombre.getText(),Double.parseDouble(fieldSueldo.getText()));
+                    JOptionPane.showMessageDialog(null,"Empleado modificado con éxito.");
+                    areaModificar.append("-> MODIFICACIÓN\n" + l.busquedaNombre(fieldNombre.getText()).toString());
+                    fieldBuscarCedula.setText("");
+                    fieldModificarNombre.setText("");
+                    fieldModificarSueldo.setText("");
+                } else {
+                    areaModificar.setText("");
+                    fieldNombre.setText("");
+                    JOptionPane.showMessageDialog(null,"No se pudo modificar el empleado porque el nombre ingresado no existe.");
                 }
             }
         });

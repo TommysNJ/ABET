@@ -47,12 +47,22 @@ public class Funcionamiento {
     public void ModificarEmpleados (String cedula, String Nombre,double sueldo){
         int posicion=searchById(cedula);
         if (posicion!=-1){
-            listaEmpleados.get(posicion).setCedula(cedula);
             listaEmpleados.get(posicion).setNombre(Nombre);
             listaEmpleados.get(posicion).setSueldo(sueldo);
             listaEmpleados.get(posicion).setImpuesto(sueldo);
             listaEmpleados.get(posicion).setAporte(sueldo);
             listaEmpleados.get(posicion).setSueldoarecibir(sueldo);
+        }
+    }
+
+    public void modificarEmpleadoPorNombre (String cedula, String nombre, double sueldo){
+        Empleado empleado = busquedaNombre(nombre);
+        if (empleado!=null){
+            empleado.setCedula(cedula);
+            empleado.setSueldo(sueldo);
+            empleado.setImpuesto(sueldo);
+            empleado.setAporte(sueldo);
+            empleado.setSueldoarecibir(sueldo);
         }
     }
 
